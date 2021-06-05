@@ -69,9 +69,9 @@ export default {
 
 .imp-ppl-text{
   font-size: 40px;
-  font-family: 'Great Vibes';
+  /* font-family: 'Great Vibes';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; */
 }
 .bride-groom-text{
   font-size: 48px;

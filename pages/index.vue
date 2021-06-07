@@ -4,7 +4,7 @@
       <img src="https://i.imgur.com/t6ffnbn.png" alt="image-top-left" class="top-left-decoration"> 
     <div>
       <div class="invite-container">
-        <span class='generic-text' v-if="guestUser"> Hey <span class="imp-ppl-text">{{guestUser}},</span></span>
+        <span class='generic-text' v-show="guestUser"> Hey <span class="imp-ppl-text">{{guestUser}},</span></span>
         <span class='generic-text'>We,</span>
          <span class="bride-groom-text" >Mohana</span>
          <span class='generic-text'>&</span>

@@ -1,7 +1,7 @@
 <template>
-  <div class="container" @click="closeVideo">
-      <img src="https://i.imgur.com/dGOOfnA.png" alt="image-top-right" class="top-right-decoration">
-      <img src="https://i.imgur.com/t6ffnbn.png" alt="image-top-left" class="top-left-decoration"> 
+  <div id="container" class="container" @click="closeVideo">
+      <img src="https://i.imgur.com/dGOOfnA.png" alt="image-top-right" class="static-img top-right-decoration">
+      <img src="https://i.imgur.com/t6ffnbn.png" alt="image-top-left" class="static-img top-left-decoration"> 
     <div>
       <div class="invite-container">
         <span class='generic-text' v-show="guestUser"> Hey <span class="imp-ppl-text">{{guestUser}},</span></span>
@@ -17,7 +17,7 @@
         </div>
         <span class='generic-text'>It would mean the world to Us if you could wish Us on our special day!</span>
       </div>
-      <iframe class="video-container" v-if="showVideo" width="560" height="315" src="https://www.youtube.com/embed/1T5xkas3_h8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!-- <iframe class="video-container" v-if="showVideo" width="560" height="315" src="https://www.youtube.com/embed/1T5xkas3_h8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
     </div>
   </div>
@@ -36,7 +36,28 @@ export default {
     }
 
   },
+  mounted(){
+    if(process.client){
+      TweenLite.set(".leaf",{xPercent:"-50%",yPercent:"-50%"})
+      var total = 30;
+      var warp = document.getElementById("container"),	w = window.innerWidth , h = window.innerHeight;
+      for (let i=0; i<total; i++){ 
+          var Div = document.createElement('div');
+          TweenLite.set(Div,{attr:{class:'leaf'},x:this.getRangeValues(-w,w),y:this.getRangeValues(-h/2,(-h/2)+1),z:this.getRangeValues(-200,200)});
+          warp.appendChild(Div);
+          this.animate(Div,h);
+        }
+      }
+  },
   methods:{
+    getRangeValues(min, max){
+      return min+Math.random()*(max-min);
+    },
+    animate(elm,h,){
+        TweenMax.to(elm,this.getRangeValues(6,15),{y:h+100,ease:Linear.easeNone,repeat:-1,delay:-15});
+        TweenMax.to(elm,this.getRangeValues(4,8),{x:'+=100',rotationZ:this.getRangeValues(0,180),repeat:-1,yoyo:true,ease:Sine.easeInOut});
+        TweenMax.to(elm,this.getRangeValues(2,8),{rotationX:this.getRangeValues(0,360),rotationY:this.getRangeValues(0,360),repeat:-1,yoyo:true,ease:Sine.easeInOut,delay:-5});
+    },
     linkClicked(link,event){
       if(link.linkAddress){
         window.open(link.linkAddress,'_blank');
@@ -91,6 +112,9 @@ export default {
 
 <style>
 
+body{
+  overflow: hidden;
+}
 .imp-ppl-text{
   font-size: 40px;
   /* font-family: 'Great Vibes';
@@ -107,11 +131,13 @@ export default {
 .container {
   margin: 0 auto;
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
+
 }
 .invite-container{
   display: flex;
@@ -146,6 +172,7 @@ export default {
   margin: 4px;
   background-color: lightblue ;
   border-radius: 20px;
+  cursor: pointer;
 }
 a{
   text-decoration: none;
@@ -169,14 +196,27 @@ a{
   top:0;
   left:0;
 }
-img {
-	max-width: 100%;
-	height: auto;
+.static-img {
+  max-width: 100%;
+  height: auto;
 }
-
 @media (max-width:900px) {
-	img {
+	.static-img {
 		max-width: 40%;
 	}
 }
+
+
+/* animation css */
+
+.leaf{
+  width:35px;
+  height:35px;
+  position:fixed;
+  background: url(https://image.ibb.co/kyUHab/rose.png);
+  background-size: 100% 100%;
+}
+
+html, body, #container {width:100%; height:100%; }
+
 </style>

@@ -12,8 +12,9 @@
         <span class='generic-text'>Invite you to our wedding</span>
         <span class='generic-text'>on 13th June</span>
         <span class='generic-text'>@ SRI VATCHALA MARRIAGE HALL</span>
+        <span class='generic-text'>Nanganallur</span>
         <div class='links'>
-          <span @click="linkClicked(link,$event)" class='link-item' :key="index" v-for="(link, index) in links" target="_blank" :href="link.linkAddress" > {{link.text}}</span>
+          <button @click="linkClicked(link,$event)" class='link-item big-button' :key="index" v-for="(link, index) in links" target="_blank" :href="link.linkAddress" > {{link.text}}</button>
         </div>
         <span class='generic-text'>It would mean the world to Us if you could wish Us on our special day!</span>
       </div>
@@ -51,7 +52,7 @@ export default {
       var warp = document.getElementById("container"),	w = window.innerWidth , h = window.innerHeight;
       for (let i=0; i<total; i++){ 
           var Div = document.createElement('div');
-          TweenLite.set(Div,{attr:{class:'leaf'},x:this.getRangeValues(-w,w),y:this.getRangeValues(-h/2,(-h/2)+1),z:this.getRangeValues(-200,200)});
+          TweenLite.set(Div,{attr:{class:'leaf'},x:this.getRangeValues(-w/2,w/2),y:this.getRangeValues(-h/2,(-h/2)+1),z:this.getRangeValues(-200,200)});
           warp.appendChild(Div);
           this.animate(Div,h);
         }
@@ -98,15 +99,15 @@ export default {
       guestUser: '',
       links: [
         {
-          text: 'Venue',
-          linkAddress: 'https://goo.gl/maps/yo6oTMLirQXmPP3Y6'
-        },
-        {
           text: 'Live Video',
           linkAddress:'https://www.livewedding.org/anandmohana/',
           functionTrigger: ()=>{
                   this.showVideo = true
           },
+        },
+        {
+          text: 'Venue',
+          linkAddress: 'https://goo.gl/maps/yo6oTMLirQXmPP3Y6'
         },
         {
           text: 'Invitation',
@@ -119,15 +120,14 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+
 
 body{
   overflow: hidden;
 }
 .imp-ppl-text{
-  font-size: 40px;
-  /* font-family: 'Great Vibes';
-  font-style: normal;
-  font-weight: 400; */
+  font-size: 32px;
 }
 .bride-groom-text{
   font-size: 48px;
@@ -145,7 +145,6 @@ body{
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-
 }
 .invite-container{
   display: flex;
@@ -173,10 +172,11 @@ body{
   padding-bottom: 16px;
   display: flex;
   justify-content: center;
+
   flex-wrap: wrap;
 }
 .link-item{
-  padding: 12px;
+  /* padding: 12px; */
   margin: 4px;
   background-color: lightblue ;
   border-radius: 20px;
@@ -201,6 +201,7 @@ a{
 }
 .valentine-red{
   color: #DC362D;
+  font-weight: 700;
 }
 .top-left-decoration{
   position: fixed;
@@ -215,6 +216,85 @@ a{
 	.static-img {
 		max-width: 40%;
 	}
+}
+
+/* button css */
+:root {
+  --backgroundColor: rgba(246, 241, 209);
+  --colorShadeA: rgb(106, 163, 137);
+  --colorShadeB: rgb(121, 186, 156);
+  --colorShadeC: rgb(150, 232, 195);
+  --colorShadeD: rgb(187, 232, 211);
+  --colorShadeE: rgb(205, 255, 232);
+}
+
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--backgroundColor);
+}
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 24px;
+    color:var(--colorShadeA);
+  font-weight: 700;
+  font-family: inherit;
+}
+
+button.big-button {
+  border: 2px solid var(--colorShadeA);
+  border-radius: 1em;
+  background: var(--colorShadeE);
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  padding: 8px;
+  font-size:20px;
+}
+button.big-button::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--colorShadeB);
+  transform: translate3d(0, 0.4em, -0.5em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+
+button.big-button:hover {
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
+}
+
+button.big-button:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+button.big-button:active {
+  transform: translate(0em, 0.75em);
+}
+
+button.big-button:active::before {
+  transform: translate3d(0, 0, -1em);
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }
 
 

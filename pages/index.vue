@@ -7,7 +7,7 @@
         <span class='generic-text' v-show="guestUser"> Hey <span class="imp-ppl-text">{{guestUser}},</span></span>
         <span class='generic-text'>We,</span>
          <span class="bride-groom-text" >Mohana</span>
-         <span class='generic-text'>&</span>
+         <span class='generic-text valentine-red'>&</span>
         <span class="bride-groom-text">Anand</span>
         <span class='generic-text'>Invite you to our wedding</span>
         <span class='generic-text'>on 13th June</span>
@@ -17,6 +17,14 @@
         </div>
         <span class='generic-text'>It would mean the world to Us if you could wish Us on our special day!</span>
       </div>
+      <figure>
+          <audio
+              autoplay
+              src="https://freemusicspot.com/m/happy-together-turtles.mp3">
+                  Your browser does not support the
+                  <code>audio</code> element.
+          </audio>
+      </figure>
       <!-- <iframe class="video-container" v-if="showVideo" width="560" height="315" src="https://www.youtube.com/embed/1T5xkas3_h8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
     </div>
@@ -190,6 +198,9 @@ a{
   position: fixed;
   top:0;
   right:0;
+}
+.valentine-red{
+  color: #DC362D;
 }
 .top-left-decoration{
   position: fixed;

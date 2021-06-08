@@ -4,7 +4,7 @@
       <img src="https://i.imgur.com/t6ffnbn.png" alt="image-top-left" class="static-img top-left-decoration"> 
     <div>
       <div class="invite-container">
-        <span class='generic-text' v-show="guestUser"> Hey <span class="imp-ppl-text">{{guestUser}},</span></span>
+        <span class='generic-text' v-show="guestUser"> {{prefix}} <span class="imp-ppl-text">{{guestUser}},</span></span>
         <span class='generic-text'>We,</span>
          <span class="bride-groom-text" >Mohana</span>
          <span class='generic-text valentine-red'>&</span>
@@ -37,11 +37,15 @@ export default {
   created(){
     const plainUserName = this.getParams('un');
     const encodedUserName = this.getParams('us');
+    const prefix = this.getParams('up');
     if(plainUserName){
       this.guestUser = plainUserName;
     }
     if(encodedUserName){
       this.guestUser = this.a2b(encodedUserName);
+    }
+    if(prefix){
+      this.prefix = prefix
     }
 
   },
@@ -97,6 +101,7 @@ export default {
     return {
       showVideo: false,
       guestUser: '',
+      prefix: 'Hey',
       links: [
         {
           text: 'Live Video',

@@ -9,10 +9,12 @@
          <span class="bride-groom-text" >Mohana</span>
          <span class='generic-text valentine-red'>&</span>
         <span class="bride-groom-text">Anand</span>
-        <span class='generic-text'>Invite you to our wedding</span>
-        <span class='generic-text'>on 13th June</span>
-        <span class='generic-text'>@ SRI VATCHALA MARRIAGE HALL</span>
-        <span class='generic-text'>Nanganallur</span>
+        <span class='generic-text'>Invite you to our</span>
+        <span class="event-text"> Wedding : </span>
+        <span class='generic-text'>  13th June 7.30 AM to 9.30 AM</span>
+        <span class='generic-text valentine-red'>&</span>
+        <span class="event-text">Reception : </span>
+        <span class='generic-text'> 12th June 6.30 PM to 9.30 PM</span>
         <div class='links'>
           <button @click="linkClicked(link,$event)" class='link-item big-button' :key="index" v-for="(link, index) in links" target="_blank" :href="link.linkAddress" > {{link.text}}</button>
         </div>
@@ -104,20 +106,18 @@ export default {
       prefix: 'Hey',
       links: [
         {
-          text: 'Live Video',
-          linkAddress:'https://www.livewedding.org/anandmohana/',
-          functionTrigger: ()=>{
-                  this.showVideo = true
-          },
-        },
+          text: 'Watch Reception',
+          linkAddress:'https://www.youtube.com/watch?v=5Qro_QYau0Y/'
+        }, 
+
         {
+          text: 'Watch Wedding',
+          linkAddress:'https://www.youtube.com/watch?v=bz0JUKpaCnw/'
+        },
+                        {
           text: 'Venue',
           linkAddress: 'https://goo.gl/maps/yo6oTMLirQXmPP3Y6'
         },
-        {
-          text: 'Invitation',
-          linkAddress: 'https://drive.google.com/file/d/1LT1zZz3Rt3lRfnJsobR03_9hZiG83gCO/view?usp=sharing'
-        }
       ]
     }
   }
@@ -171,6 +171,9 @@ body{
   word-spacing: 5px;
   padding-bottom: 15px;
 }
+.event-text{
+  text-decoration: underline;
+}
 
 .links {
   padding-top: 16px;
@@ -183,6 +186,8 @@ body{
 .link-item{
   /* padding: 12px; */
   margin: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   background-color: lightblue ;
   border-radius: 20px;
   cursor: pointer;
@@ -293,14 +298,14 @@ button.big-button:hover::before {
   transform: translate3d(0, 0.75em, -1em);
 }
 
-button.big-button:active {
+/* button.big-button:active {
   transform: translate(0em, 0.75em);
 }
 
 button.big-button:active::before {
   transform: translate3d(0, 0, -1em);
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
-}
+} */
 
 
 /* animation css */

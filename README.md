@@ -16,5 +16,8 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+Our wedding site created with Vue/SSR :slightly_smiling_face:
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Site is hosted in Netlify by mapping to a custom domain which i brough in google domains. 
+
+Try to use it for your special day 💫
